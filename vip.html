@@ -51,14 +51,43 @@
       backdrop-filter: blur(12px);
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 32px; width: auto; max-width: 150px; }
-    .nav-back {
-      font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
       color: var(--text-mid); text-decoration: none;
-      display: flex; align-items: center; gap: 8px; transition: color 0.25s;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.5px;
+      transition: color 0.25s;
     }
-    .nav-back:hover { color: var(--orange); }
-    .nav-back-arrow { font-size: 16px; line-height: 1; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-book {
+      background: var(--orange); color: #fff;
+      font-size: 12px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; text-decoration: none;
+      padding: 11px 28px; transition: background 0.25s;
+    }
+    .nav-book:hover { background: var(--orange-dk); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      position: fixed; inset: 0; background: var(--cream); z-index: 99;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+      transform: translateX(100%); transition: transform 0.4s ease; pointer-events: none;
+    }
+    .mobile-menu.open { transform: translateX(0); pointer-events: all; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--text); text-decoration: none; transition: color 0.25s; }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu .mobile-cta {
+      background: var(--orange); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-size: 13px;
+      font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 16px 40px; margin-top: 8px;
+    }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -129,7 +158,7 @@
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 24px; margin-bottom: 32px;
     }
-    .footer-logo img { height: 36px; width: auto; max-width: 150px; filter: brightness(10); opacity: 0.8; }
+    .footer-logo img { height: 36px; width: auto; filter: brightness(10); opacity: 0.8; }
     .footer-socials { display: flex; gap: 12px; }
     .social-pill {
       background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
@@ -150,6 +179,10 @@
 
     @media (max-width: 760px) {
       nav { padding: 14px 20px; }
+      .nav-logo img { height: 28px; }
+      .nav-links { display: none; }
+      .nav-book { display: none; }
+      .hamburger { display: flex; }
       .page-hero { padding: 96px 24px 48px; }
       .page-hero::before, .page-hero::after { display: none; }
       .form-section { padding: 40px 20px 64px; }
@@ -161,13 +194,29 @@
 </head>
 <body>
 
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#process">How It Works</a>
+    <a href="index.html#about">About Hope</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="inquiry.html" class="mobile-cta">Book Now</a>
+  </div>
+
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="https://assets.cdn.filesafe.space/eOLOvMfs3a79iAm2eaMg/media/67fe6bab266b6f6610960ccf.png" alt="Tulsa Hair Extension Pro" />
+      <img src="https://assets.cdn.filesafe.space/eOLOvMfs3a79iAm2eaMg/media/67fe6bab266b6f6610960ccf.png" alt="Tulsa Hair Extension Pro" width="160" height="36" />
     </a>
-    <a href="index.html" class="nav-back">
-      <span class="nav-back-arrow">←</span> Back to Site
-    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">How It Works</a>
+      <a href="index.html#about">About Hope</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="inquiry.html" class="nav-book">Book Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="page-hero">
@@ -215,5 +264,23 @@
   </footer>
 
   <script src="https://api.hairpro360.com/js/form_embed.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
 </body>
 </html>
