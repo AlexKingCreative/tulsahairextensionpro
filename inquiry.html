@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Consultation | Tulsa Hair Extension Pro</title>
+  <meta name="description" content="Request a hair extension consultation with Hope Newnam at Tulsa Hair Extension Pro. Sew-in wefts, keratin bonds, tinsel, and toppers in Tulsa, OK." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FBF5ED;
+      --cream2:     #F5EAD8;
+      --cream3:     #EDE0CC;
+      --orange:     #E07028;
+      --orange-lt:  #F0956A;
+      --orange-dk:  #C05A18;
+      --peach:      #F2B89A;
+      --caramel:    #C8854A;
+      --text:       #2A1A0E;
+      --text-mid:   #6B5040;
+      --text-lt:    #A88878;
+      --border:     rgba(200,133,74,0.2);
+      --border-lt:  rgba(200,133,74,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 56px;
+      background: rgba(251,245,237,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto; max-width: 150px; }
+    .nav-back {
+      font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-mid); text-decoration: none;
+      display: flex; align-items: center; gap: 8px; transition: color 0.25s;
+    }
+    .nav-back:hover { color: var(--orange); }
+    .nav-back-arrow { font-size: 16px; line-height: 1; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--orange);
+      padding: 120px 56px 64px;
+      text-align: center;
+    }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 20px;
+    }
+    .page-eyebrow::before { content: ''; width: 24px; height: 1px; background: rgba(255,255,255,0.5); }
+    .page-title {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(36px, 5vw, 64px); line-height: 1.1;
+      color: #fff; margin-bottom: 20px;
+    }
+    .page-title em { font-style: italic; }
+    .page-subtitle {
+      font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.85);
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ── FORM WRAPPER ── */
+    .form-section {
+      flex: 1;
+      padding: 64px 56px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .form-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      margin-bottom: 56px; padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .form-intro-block {}
+    .form-intro-label {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); font-weight: 500; margin-bottom: 10px;
+    }
+    .form-intro-val {
+      font-family: 'Playfair Display', serif; font-size: 18px;
+      color: var(--text); line-height: 1.5;
+    }
+    .form-intro-val a { color: var(--text); text-decoration: none; transition: color 0.25s; }
+    .form-intro-val a:hover { color: var(--orange); }
+    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; }
+    .hours-day { font-size: 13px; color: var(--text-mid); font-style: italic; }
+    .hours-time { font-size: 13px; color: var(--text); }
+
+    /* GHL iframe container */
+    .ghl-form-wrap {
+      background: var(--cream2);
+      border: 1px solid var(--border-lt);
+      padding: 0;
+      overflow: hidden;
+    }
+    .ghl-form-wrap iframe {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); padding: 40px 56px 28px;
+    }
+    .footer-top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px; margin-bottom: 32px;
+    }
+    .footer-logo img { height: 36px; width: auto; max-width: 150px; filter: brightness(10); opacity: 0.8; }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-pill {
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+      font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; padding: 8px 18px;
+      transition: background 0.25s, color 0.25s;
+    }
+    .social-pill:hover { background: var(--orange); color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      font-size: 11px; color: rgba(255,255,255,0.3);
+    }
+    .footer-cherry {
+      color: var(--peach); text-decoration: none; font-size: 11px; transition: color 0.25s;
+    }
+    .footer-cherry:hover { color: var(--orange-lt); }
+
+    @media (max-width: 760px) {
+      nav { padding: 14px 20px; }
+      .page-hero { padding: 96px 24px 48px; }
+      .form-section { padding: 40px 20px 64px; }
+      .form-intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 40px; }
+      footer { padding: 32px 20px 20px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-bottom { flex-direction: column; gap: 6px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://assets.cdn.filesafe.space/eOLOvMfs3a79iAm2eaMg/media/67fe6bab266b6f6610960ccf.png" alt="Tulsa Hair Extension Pro" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <span class="nav-back-arrow">←</span> Back to Site
+    </a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-eyebrow">Tulsa Hair Extension Pro</div>
+    <h1 class="page-title">Hair Extension<br><em>Inquiry</em></h1>
+    <p class="page-subtitle">Fill out the form below and Hope will be in touch within 24–48 hours to schedule your consultation.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-intro">
+      <div class="form-intro-block">
+        <div class="form-intro-label">Studio Location</div>
+        <div class="form-intro-val">3315 E. 47th Place, STE 114<br>Tulsa, OK 74135</div>
+      </div>
+      <div class="form-intro-block">
+        <div class="form-intro-label">Studio Hours</div>
+        <div class="hours-grid">
+          <div class="hours-day">Tue &amp; Thu</div><div class="hours-time">11:00 AM – 7:00 PM</div>
+          <div class="hours-day">Wed &amp; Fri</div><div class="hours-time">9:00 AM – 5:00 PM</div>
+          <div class="hours-day">Mon / Sat / Sun</div><div class="hours-time" style="color:var(--text-lt);">Closed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ghl-form-wrap">
+      <iframe
+        src="https://api.hairpro360.com/widget/form/HdalfU8RinJMmqxztVBo"
+        id="inline-HdalfU8RinJMmqxztVBo"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Hair Extension Inquiry"
+        data-height="1997"
+        data-layout-iframe-id="inline-HdalfU8RinJMmqxztVBo"
+        data-form-id="HdalfU8RinJMmqxztVBo"
+        title="Hair Extension Inquiry"
+        style="width:100%;height:1997px;"
+      ></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="https://assets.cdn.filesafe.space/eOLOvMfs3a79iAm2eaMg/media/67fe6bab266b6f6610960ccf.png" alt="Tulsa Hair Extension Pro" loading="lazy" />
+      </div>
+      <div class="footer-socials">
+        <a href="https://instagram.com/tulsahairextensionpro" class="social-pill" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://facebook.com/tulsahairextensionpro" class="social-pill" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tulsa Hair Extension Pro · Hope Newnam · Tulsa, OK 74135</span>
+      <a href="https://withcherry.com" class="footer-cherry" target="_blank" rel="noopener noreferrer">Financing by Cherry Pay ✦</a>
+    </div>
+  </footer>
+
+  <script src="https://api.hairpro360.com/js/form_embed.js"></script>
+</body>
+</html>
