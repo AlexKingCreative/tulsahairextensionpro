@@ -208,22 +208,6 @@
       font-size: 18px; margin-bottom: 2px;
     }
     .hero-badge-line2 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
-    .hero-sticker {
-      position: absolute; top: 40px; right: 32px;
-      width: 90px; height: 90px; border-radius: 50%;
-      background: var(--cream); border: 2px solid var(--orange);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; gap: 2px;
-      animation: spin 14s linear infinite;
-    }
-    .hero-sticker:hover { animation-play-state: paused; }
-    .hero-sticker-text {
-      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--orange); line-height: 1.4; padding: 0 8px;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── MARQUEE ──────────────────────────────────── */
     .marquee-wrap {
@@ -763,9 +747,6 @@
       <div class="hero-badge">
         <div class="hero-badge-line1">by Hope Newnam</div>
         <div class="hero-badge-line2">Licensed Extension Artist</div>
-      </div>
-      <div class="hero-sticker" aria-hidden="true">
-        <div class="hero-sticker-text">100%<br>Human<br>Hair</div>
       </div>
     </div>
   </section>
